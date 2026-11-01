@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import android.app.AlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editName, editPhone, editAddress;
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textQuantity, textExpressInfo;
     private Switch switchExpress;
     private Button buttonOrder;
+
+    private boolean zamowienieZlozone = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,18 +158,44 @@ public class MainActivity extends AppCompatActivity {
         return dodatki.toString();
     }
 
-    private void pokazPodsumowanie() {
-        String podsumowanie =
-                "Klient: " + editName.getText().toString() +
-                        "\nTelefon: " + editPhone.getText().toString() +
-                        "\nAdres: " + editAddress.getText().toString() +
-                        "\nPizza: " + spinnerPizza.getSelectedItem().toString() +
-                        "\nRozmiar: " + pobierzRozmiar() +
-                        "\nDodatki: " + pobierzDodatki() +
-                        "\nIlość: " + (seekQuantity.getProgress() + 1) +
-                        "\nDostawa: " +
-                        (switchExpress.isChecked() ? "Ekspresowa" : "Standardowa");
+    private String przygotujPodsumowanie() {
+        return "Klient: " + editName.getText().toString() +
+                "\nTelefon: " + editPhone.getText().toString() +
+                "\nAdres: " + editAddress.getText().toString() +
+                "\nPizza: " + spinnerPizza.getSelectedItem().toString() +
+                "\nRozmiar: " + pobierzRozmiar() +
+                "\nDodatki: " + pobierzDodatki() +
+                "\nIlość: " + (seekQuantity.getProgress() + 1) +
+                "\nDostawa: " +
+                (switchExpress.isChecked() ? "Ekspresowa" : "Standardowa");
+    }
 
-        Toast.makeText(this, podsumowanie, Toast.LENGTH_LONG).show();
+    private void pokazPodsumowanie() {
+        String podsumowanie = przygotujPodsumowanie();
+
+        new AlertDialog.Builder(this)
+                .setTitle("Potwierdzenie zamówienia")
+                .setMessage(podsumowanie + "\n\nCzy potwierdzasz zamówienie?")
+                .setPositiveButton("Potwierdź", (dialog, which) -> {
+                    zamowienieZlozone = true;
+
+                    Snackbar.make(
+                            findViewById(R.id.mainLayout),
+                            "Zamówienie zostało złożone!",
+                            Snackbar.LENGTH_LONG
+                    ).setAction("Cofnij", v -> {
+                        zamowienieZlozone = false;
+
+                        Toast.makeText(
+                                MainActivity.this,
+                                "Zamówienie zostało cofnięte",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }).show();
+                })
+                .setNegativeButton("Anuluj", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .show();
     }
 }
