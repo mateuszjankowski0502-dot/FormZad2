@@ -1,196 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#B71C1C"
-            android:padding="16dp"
-            android:text="@string/title"
-            android:textColor="#FFFFFF"
+            android:text="ZAMÓWIENIE PIZZY"
             android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_name" />
+            android:text="Dane klienta"
+            android:textStyle="bold"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_name"
-            android:inputType="textPersonName"
-            android:maxLines="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_phone" />
+            android:hint="@string/name_hint"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/etPhone"
+            android:id="@+id/editPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_phone"
-            android:inputType="phone"
-            android:maxLines="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_address" />
+            android:hint="@string/phone_hint"
+            android:inputType="phone" />
 
         <EditText
-            android:id="@+id/etAddress"
+            android:id="@+id/editAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_address"
-            android:inputType="textPostalAddress"
-            android:maxLines="2" />
+            android:hint="@string/address_hint"
+            android:inputType="textPostalAddress" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_pizza" />
+            android:text="Rodzaj pizzy"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
 
         <Spinner
-            android:id="@+id/spPizza"
+            android:id="@+id/spinnerPizza"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/pizza_types" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_size" />
+            android:text="Rozmiar pizzy"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
 
         <RadioGroup
-            android:id="@+id/rgSize"
+            android:id="@+id/radioSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/rbSmall"
+                android:id="@+id/radioSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/size_small" />
+                android:text="Mała" />
 
             <RadioButton
-                android:id="@+id/rbMedium"
+                android:id="@+id/radioMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/size_medium" />
+                android:text="Średnia"
+                android:checked="true" />
 
             <RadioButton
-                android:id="@+id/rbLarge"
+                android:id="@+id/radioLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/size_large" />
+                android:text="Duża" />
+
         </RadioGroup>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_addons" />
+            android:text="Dodatki"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
 
         <CheckBox
-            android:id="@+id/cbCheese"
+            android:id="@+id/checkCheese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/addon_cheese" />
+            android:text="Dodatkowy ser" />
 
         <CheckBox
-            android:id="@+id/cbHam"
+            android:id="@+id/checkHam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/addon_ham" />
+            android:text="Szynka" />
 
         <CheckBox
-            android:id="@+id/cbMushrooms"
+            android:id="@+id/checkMushrooms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/addon_mushrooms" />
+            android:text="Pieczarki" />
 
         <CheckBox
-            android:id="@+id/cbPepper"
+            android:id="@+id/checkOlives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/addon_pepper" />
+            android:text="Oliwki" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/label_quantity" />
-
-        <TextView
-            android:id="@+id/tvQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_quantity_value"
-            android:textStyle="bold" />
+            android:text="Ilość pizz"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
 
         <SeekBar
-            android:id="@+id/sbQuantity"
+            android:id="@+id/seekQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="9"
             android:progress="0" />
 
+        <TextView
+            android:id="@+id/textQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ilość: 1"
+            android:textSize="16sp" />
+
         <Switch
-            android:id="@+id/swExpress"
+            android:id="@+id/switchExpress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/express_delivery" />
+            android:text="Dostawa ekspresowa" />
 
         <TextView
-            android:id="@+id/tvExpressInfo"
+            android:id="@+id/textExpressInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/express_info"
-            android:textColor="#B71C1C"
+            android:text="Dostawa ekspresowa wiąże się z dodatkową opłatą."
             android:visibility="gone" />
 
         <CheckBox
-            android:id="@+id/cbTerms"
-            android:layout_width="wrap_content"
+            android:id="@+id/checkAgreement"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/terms" />
+            android:text="Akceptuję warunki zamówienia" />
 
         <Button
-            android:id="@+id/btnOrder"
+            android:id="@+id/buttonOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:enabled="false"
-            android:text="@string/order_button" />
-
-        <TextView
-            android:id="@+id/tvSummary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp" />
+            android:text="Zamawiam"
+            android:layout_marginTop="20dp" />
 
     </LinearLayout>
+
 </ScrollView>

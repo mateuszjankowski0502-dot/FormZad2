@@ -1,66 +1,15 @@
 <resources>
     <string name="app_name">Zamówienie pizzy</string>
 
-    <string name="title">Zamów swoją pizzę</string>
-
-    <string name="label_name">Imię i nazwisko</string>
-    <string name="hint_name">Jan Kowalski</string>
-
-    <string name="label_phone">Numer telefonu</string>
-    <string name="hint_phone">123456789</string>
-
-    <string name="label_address">Adres dostawy</string>
-    <string name="hint_address">Ulica i numer domu</string>
-
-    <string name="label_pizza">Rodzaj pizzy</string>
-    <string name="label_size">Rozmiar pizzy</string>
-    <string name="size_small">Mała</string>
-    <string name="size_medium">Średnia</string>
-    <string name="size_large">Duża</string>
-
-    <string name="label_addons">Dodatki</string>
-    <string name="addon_cheese">Dodatkowy ser</string>
-    <string name="addon_ham">Szynka</string>
-    <string name="addon_mushrooms">Pieczarki</string>
-    <string name="addon_pepper">Papryka</string>
-
-    <string name="label_quantity">Ilość pizz</string>
-    <string name="label_quantity_value">1</string>
-
-    <string name="express_delivery">Dostawa ekspresowa</string>
-    <string name="express_info">Dostawa ekspresowa: dodatkowa opłata 10 zł.</string>
-
-    <string name="terms">Zgadzam się na przetwarzanie danych</string>
-    <string name="order_button">ZŁÓŻ ZAMÓWIENIE</string>
-
-    <string name="error_name">Podaj imię i nazwisko</string>
-    <string name="error_phone">Podaj poprawny numer telefonu</string>
-    <string name="error_address">Podaj adres dostawy</string>
-    <string name="error_size">Wybierz rozmiar pizzy</string>
-    <string name="error_pizza">Wybierz rodzaj pizzy</string>
-    <string name="error_terms">Zaakceptuj zgodę</string>
-
-    <string name="confirm_title">Potwierdzenie zamówienia</string>
-    <string name="confirm_message">Czy na pewno chcesz złożyć to zamówienie?</string>
-    <string name="confirm_yes">Zamawiam</string>
-    <string name="confirm_no">Wróć</string>
-
-    <string name="order_sent">Zamówienie zostało złożone</string>
-    <string name="undo">Cofnij</string>
-    <string name="undo_done">Zamówienie cofnięte</string>
-
-    <string name="summary_title">Podsumowanie zamówienia:</string>
-    <string name="summary_format">%1$s\nTelefon: %2$s\nAdres: %3$s\nPizza: %4$s\nRozmiar: %5$s\nDodatki: %6$s\nIlość: %7$d\nDostawa ekspresowa: %8$s</string>
-
-    <string name="yes_short">tak</string>
-    <string name="no_short">nie</string>
-
     <string-array name="pizza_types">
-        <item>-- wybierz pizzę --</item>
         <item>Margherita</item>
+        <item>Capricciosa</item>
         <item>Pepperoni</item>
         <item>Hawajska</item>
-        <item>Wiejska</item>
-        <item>Cztery sery</item>
+        <item>Wegetariańska</item>
     </string-array>
+
+    <string name="name_hint">Podaj imię i nazwisko</string>
+    <string name="phone_hint">Podaj numer telefonu</string>
+    <string name="address_hint">Podaj adres dostawy</string>
 </resources>
