@@ -70,14 +70,47 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         switchExpress.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                textExpressInfo.setVisibility(View.VISIBLE);
-            } else {
-                textExpressInfo.setVisibility(View.GONE);
-            }
+            textExpressInfo.setVisibility(
+                    isChecked ? View.VISIBLE : View.GONE
+            );
         });
 
-        buttonOrder.setOnClickListener(v -> pokazPodsumowanie());
+        buttonOrder.setOnClickListener(v -> sprawdzDane());
+    }
+
+    private void sprawdzDane() {
+        String imie = editName.getText().toString().trim();
+        String telefon = editPhone.getText().toString().trim();
+        String adres = editAddress.getText().toString().trim();
+
+        if (imie.isEmpty()) {
+            editName.setError("Podaj imię i nazwisko");
+            editName.requestFocus();
+            return;
+        }
+
+        if (telefon.isEmpty()) {
+            editPhone.setError("Podaj numer telefonu");
+            editPhone.requestFocus();
+            return;
+        }
+
+        if (adres.isEmpty()) {
+            editAddress.setError("Podaj adres dostawy");
+            editAddress.requestFocus();
+            return;
+        }
+
+        if (!checkAgreement.isChecked()) {
+            Toast.makeText(
+                    this,
+                    "Musisz zaakceptować warunki zamówienia",
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
+
+        pokazPodsumowanie();
     }
 
     private String pobierzRozmiar() {
@@ -120,29 +153,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pokazPodsumowanie() {
-        String imie = editName.getText().toString();
-        String telefon = editPhone.getText().toString();
-        String adres = editAddress.getText().toString();
-
-        String pizza = spinnerPizza.getSelectedItem().toString();
-        String rozmiar = pobierzRozmiar();
-        String dodatki = pobierzDodatki();
-
-        int ilosc = seekQuantity.getProgress() + 1;
-
-        String dostawa = switchExpress.isChecked()
-                ? "Ekspresowa"
-                : "Standardowa";
-
         String podsumowanie =
-                "Klient: " + imie +
-                        "\nTelefon: " + telefon +
-                        "\nAdres: " + adres +
-                        "\nPizza: " + pizza +
-                        "\nRozmiar: " + rozmiar +
-                        "\nDodatki: " + dodatki +
-                        "\nIlość: " + ilosc +
-                        "\nDostawa: " + dostawa;
+                "Klient: " + editName.getText().toString() +
+                        "\nTelefon: " + editPhone.getText().toString() +
+                        "\nAdres: " + editAddress.getText().toString() +
+                        "\nPizza: " + spinnerPizza.getSelectedItem().toString() +
+                        "\nRozmiar: " + pobierzRozmiar() +
+                        "\nDodatki: " + pobierzDodatki() +
+                        "\nIlość: " + (seekQuantity.getProgress() + 1) +
+                        "\nDostawa: " +
+                        (switchExpress.isChecked() ? "Ekspresowa" : "Standardowa");
 
         Toast.makeText(this, podsumowanie, Toast.LENGTH_LONG).show();
     }
